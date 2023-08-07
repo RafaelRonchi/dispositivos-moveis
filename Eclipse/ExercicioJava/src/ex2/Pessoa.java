@@ -6,6 +6,17 @@ public class Pessoa {
 	private String Telefone;
 	private Endereco e;
 	
+	
+	public Pessoa(Pessoa p, Endereco e) {
+		super();
+		Nome = p.getNome();;
+		Email = p.getEmail();
+		Telefone = p.getTelefone();
+		this.e = e;
+	}
+	public Pessoa() {
+		
+	}
 	public Endereco getE() {
 		return e;
 	}
@@ -30,5 +41,8 @@ public class Pessoa {
 	public void setTelefone(String telefone) {
 		Telefone = telefone;
 	}
-	
+	public String toString(Pessoa p, Endereco c) {
+		
+		return "\nNome: " + p.getNome() + " ,Email: " + p.getEmail() + " ,Telefone: "+ p.getTelefone() + " ,Cidade: "+ c.getNomeCidade() + " ,Número: "+ c.getNumero()+" ,Rua: " + c.getRua();
+	}
 }
