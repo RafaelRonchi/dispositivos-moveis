@@ -31,5 +31,5 @@ public class newactivity extends AppCompatActivity {
     }
 
 
-    public Integer i = 0;
+    public Integer i = 1;
 }
