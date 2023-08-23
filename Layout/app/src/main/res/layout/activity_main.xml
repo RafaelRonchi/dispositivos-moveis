@@ -68,6 +68,13 @@
             android:fontFamily="sans-serif-smallcaps"
             android:text="Enviar"
             android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:rotationX="37"
+            app:srcCompat="@drawable/happy" />
     </LinearLayout>
 
     <LinearLayout
