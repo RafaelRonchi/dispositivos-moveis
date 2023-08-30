@@ -9,11 +9,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class Resultado extends AppCompatActivity {
     public String imc;
     public TextView resultadoImc;
     public TextView altura;
     public TextView peso;
+
     public Double alturaR;
     public Double pesoR;
 
@@ -38,6 +41,7 @@ public class Resultado extends AppCompatActivity {
         altura.setText("Altura: " +  alturaR );
         peso.setText("Peso: " + pesoR);
         resultadoImc.setText(imc);
+        SetarImg();
     }
 
     public void voltarM(View view){
@@ -46,11 +50,31 @@ public class Resultado extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void SetarImg(){
-        if (Double.valueOf(imc) <= 18.5){
+    public void SetarImg() {
+        double imcValue = Double.parseDouble(imc);
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        String formattedIMC = decimalFormat.format(imcValue);
+
+        if (imcValue < 18.5) {
             imagem.setImageResource(R.drawable.abaixopeso);
+            resultadoImc.setText(formattedIMC + " Abaixo do peso");
+        } else if (imcValue < 24.9) {
+            imagem.setImageResource(R.drawable.perfil);
+            resultadoImc.setText(formattedIMC + " Normal");
+        } else if (imcValue < 29.9) {
+            imagem.setImageResource(R.drawable.sobrepeso);
+            resultadoImc.setText(formattedIMC + " Sobrepeso");
+        } else if (imcValue < 34.9) {
+            imagem.setImageResource(R.drawable.obesidade1);
+            resultadoImc.setText(formattedIMC + " Obesidade 1");
+        } else if (imcValue < 39.9) {
+            imagem.setImageResource(R.drawable.obesidade2);
+            resultadoImc.setText(formattedIMC + " Obesidade 2");
+        } else {
+            imagem.setImageResource(R.drawable.obesidade3);
+            resultadoImc.setText(formattedIMC + " Obesidade 3");
         }
-        if(Double.valueOf(imc) > 18.5 && Double.valueOf(imc) < 24.9)
     }
+
 
 }
