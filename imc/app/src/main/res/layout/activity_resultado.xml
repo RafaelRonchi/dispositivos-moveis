@@ -17,32 +17,51 @@
             android:layout_width="match_parent"
             android:layout_height="71dp"
             android:gravity="center"
-            android:text="Resultado" />
+            android:text="Resultado"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/PesoTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Peso:" />
+            android:text="Peso:"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/AlturaTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Altura:" />
+            android:text="Altura:"
+            android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/Textt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="IMC" />
 
+        <TextView
+            android:id="@+id/Final"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="TextView"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/normal" />
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <Button
+            android:id="@+id/Voltar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="voltarM"
+            android:text="Voltar" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
