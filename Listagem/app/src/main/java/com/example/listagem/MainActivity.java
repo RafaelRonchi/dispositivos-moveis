@@ -2,24 +2,37 @@ package com.example.listagem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
-    String[] nomes;
+    ArrayList<String> nomes = new ArrayList<>();
     ListView listView;
+
+    EditText valor;
+    Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         listView = findViewById(R.id.ListView);
+        valor = findViewById(R.id.editText);
+        button = findViewById(R.id.button);
 
-        nomes =new String[] {"Pipoca ", "Cenoura", "Cerveja" };
+        nomes.addAll(Arrays.asList("Pipoca", "Cenoura", "Cerveja"));
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter(
                 this,
@@ -34,5 +47,13 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "aaaaa"+Integer.toString(i), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void adicionarValor(View v){
+        String valorDigitado = valor.getText().toString();
+        nomes.add(valorDigitado);
+        valor.setText("");
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(valor.getWindowToken(), 0);
     }
 }
