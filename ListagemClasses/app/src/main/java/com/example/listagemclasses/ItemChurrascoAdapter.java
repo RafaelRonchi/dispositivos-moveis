@@ -1,6 +1,7 @@
 package com.example.listagemclasses;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,9 +31,10 @@ public class ItemChurrascoAdapter extends ArrayAdapter<ItemChurrasco> {
         convertView  = inflater.inflate(MyResource, parent, false);
 
         //return super.getView(position, convertView, parent);
-        return convertView;
-
         TextView txtid = convertView.findViewById(R.id.txtid);
         TextView txtNome = convertView.findViewById(R.id.txtnome);
+        Image image = convertView.findViewById(R.id.imageView);
+
+        return convertView;
     }
 }
