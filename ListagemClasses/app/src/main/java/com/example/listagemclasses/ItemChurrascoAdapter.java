@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,5 +30,9 @@ public class ItemChurrascoAdapter extends ArrayAdapter<ItemChurrasco> {
         convertView  = inflater.inflate(MyResource, parent, false);
 
         //return super.getView(position, convertView, parent);
+        return convertView;
+
+        TextView txtid = convertView.findViewById(R.id.txtid);
+        TextView txtNome = convertView.findViewById(R.id.txtnome);
     }
 }
