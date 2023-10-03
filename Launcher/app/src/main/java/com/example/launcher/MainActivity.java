@@ -7,7 +7,10 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -32,20 +35,35 @@ public class MainActivity extends AppCompatActivity {
 
         AppAdapter appAdapter = new AppAdapter(this,R.layout.activity_itens, packageInfoList);
         listView.setAdapter(appAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ApplicationInfo applicationInfo = (ApplicationInfo) parent.getItemAtPosition(position);
+                if (applicationInfo != null) {
+                    startApp(applicationInfo.packageName);
+                }
+            }
+        });
+
+
     }
 
-    
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        ApplicationInfo applicationInfo = (ApplicationInfo) parent.getItemAtPosition(position);
-        String packageName = applicationInfo.packageName;
-        Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
-
-        Intent intent = packageManager.getLaunchIntentForPackage(packageName);
-        if (intent != null) {
-            startActivity(intent);
-        } else {
-            Toast.makeText(MainActivity.this, "Não foi possível abrir o aplicativo", Toast.LENGTH_SHORT).show();
+    private void startApp(String packageName) {
+        try {
+            Intent launchIntent = getPackageManager().getLaunchIntentForPackage(packageName);
+            if (launchIntent != null) {
+                startActivity(launchIntent);
+            } else {
+                Toast.makeText(this, "Aplicativo não encontrado", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Erro ao iniciar o aplicativo", Toast.LENGTH_SHORT).show();
         }
     }
-});
+
+
 }
+
+
