@@ -1,5 +1,6 @@
 package com.example.launcher;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.view.LayoutInflater;
@@ -15,21 +16,16 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 public class AppAdapter extends ArrayAdapter<ApplicationInfo> {
-    Context MyContext;
-    int MyResource;
-
     public AppAdapter(MainActivity mainActivity, int item_lista, List<ApplicationInfo> packageInfoList) {
         super(mainActivity, item_lista, packageInfoList);
-        MyContext = mainActivity;
-        MyResource = item_lista;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         //Inflando layout do item da lista
-        LayoutInflater inflater = LayoutInflater.from(MyContext);
-        View view = inflater.inflate(MyResource, parent, false);
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        View view = inflater.inflate(R.layout.activity_itens, parent, false);
         //Recuperando o objeto ApplicationInfo da posição atual
         ApplicationInfo applicationInfo = getItem(position);
         //Recuperando os componentes do layout
@@ -40,4 +36,7 @@ public class AppAdapter extends ArrayAdapter<ApplicationInfo> {
         textViewAppName.setText(applicationInfo.loadLabel(getContext().getPackageManager()));
         return view;
     }
+
+
 }
+

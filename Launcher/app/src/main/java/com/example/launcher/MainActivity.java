@@ -27,9 +27,25 @@ public class MainActivity extends AppCompatActivity {
         um componente específico a ser direcionado neste momento.*/
         Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
         mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+
         List<ResolveInfo> appList = packageManager.queryIntentActivities(mainIntent, 0);
 
-        AppAdapter appAdapter = new AppAdapter(this,R.layout.item_lista, packageInfoList);
+        AppAdapter appAdapter = new AppAdapter(this,R.layout.activity_itens, packageInfoList);
         listView.setAdapter(appAdapter);
     }
+
+    
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        ApplicationInfo applicationInfo = (ApplicationInfo) parent.getItemAtPosition(position);
+        String packageName = applicationInfo.packageName;
+        Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
+
+        Intent intent = packageManager.getLaunchIntentForPackage(packageName);
+        if (intent != null) {
+            startActivity(intent);
+        } else {
+            Toast.makeText(MainActivity.this, "Não foi possível abrir o aplicativo", Toast.LENGTH_SHORT).show();
+        }
+    }
+});
 }
