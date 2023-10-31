@@ -1,4 +1,4 @@
-package com.example.sqlitecadastro;
+package com.example.sqlitecadastro.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
+import com.example.sqlitecadastro.R;
 
 import java.util.ArrayList;
 
