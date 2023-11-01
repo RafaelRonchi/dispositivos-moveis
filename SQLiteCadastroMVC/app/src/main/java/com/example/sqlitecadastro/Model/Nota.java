@@ -8,6 +8,12 @@ public class Nota {
     public Nota() {
     }
 
+    public Nota(Integer idNota, String titulo, String txt) {
+        IdNota = idNota;
+        Titulo = titulo;
+        Txt = txt;
+    }
+
     public Integer getIdNota() {
         return IdNota;
     }

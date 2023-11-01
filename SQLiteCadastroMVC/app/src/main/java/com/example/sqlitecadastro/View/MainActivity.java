@@ -31,19 +31,11 @@ public class MainActivity extends AppCompatActivity {
         lv = findViewById(R.id.listV);
         btn = findViewById(R.id.button);
         text = findViewById(R.id.editTextTextPersonName);
-        sqlLitedb = openOrCreateDatabase("dbCadastro", MODE_PRIVATE, null);
-        sqlLitedb.execSQL("CREATE TABLE IF NOT EXISTS pessoas(id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR);");
 
        listarA();
     }
 
-    public void cadastrar(View v){
-        String insert = text.getText().toString();
-        ContentValues cv = new ContentValues();
-        cv.put("nome", insert);
-        sqlLitedb.insert("pessoas", null,  cv);
-        listarA();
-    }
+
 
     public void listarA(){
         Cursor cursor = sqlLitedb.rawQuery("SELECT * FROM pessoas", null);

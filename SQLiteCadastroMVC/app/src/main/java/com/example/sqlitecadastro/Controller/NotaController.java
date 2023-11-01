@@ -1,30 +1,37 @@
 package com.example.sqlitecadastro.Controller;
 
+import android.content.Context;
+
 import com.example.sqlitecadastro.Model.Nota;
+import com.example.sqlitecadastro.Model.NotaDAO;
 
 import java.util.ArrayList;
 
 public class NotaController {
-    public NotaController(){
+    Context _context;
+    NotaDAO _nDAO;
 
-    }
-
-    public Nota cadastrarNovaNota(Nota nota){
-        return null;
-    }
-    public Boolean atualizarNota(Nota nota){
-        return null;
+    public NotaController(Context _context) {
+        this._context = _context;
+        this._nDAO = new NotaDAO(this._context);
     }
 
-    public Boolean excluirNota(Nota nota){
-        return null;
+    public void cadastrarNovaNota(Nota nota){
+        _nDAO.cadastrarNovaNota(nota);
     }
-    public Nota getNota(Integer id){
-        return null;
+    public void atualizarNota(Nota nota){
+        _nDAO.atualizarNota(nota);
+    }
+
+    public void excluirNota(Nota nota){
+        _nDAO.excluirNota(nota);
+    }
+    public void getNota(Integer id){
+        _nDAO.getNota(id);
     }
 
     public ArrayList<Nota> getListaNotas(){
-        return null;
+        return _nDAO.getListaNotas();
     }
 
 }
