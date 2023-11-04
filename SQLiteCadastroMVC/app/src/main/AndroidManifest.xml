@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.SQLiteCadastro"
-        tools:targetApi="31" >
+        tools:targetApi="34" >
         <activity
             android:name=".View.ListItem"
             android:exported="false" />

@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     ListView lv;
     Button btn;
 
+    EditText titulo;
+    EditText texto;
+
     ArrayList<Nota> lista = new ArrayList<Nota>();
 
     NotaController _controller;
@@ -33,11 +36,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         lv = findViewById(R.id.listV);
         btn = findViewById(R.id.button);
+        texto = findViewById(R.id.NTexto);
+        titulo = findViewById(R.id.Ntitulo);
 
-        lista = _controller.getListaNotas();
-        lista.add(new Nota(1, "teste", "teste"));
+        atualizarLista();
         NotaArrayAdpter adpter = new NotaArrayAdpter(this, R.layout.activity_list_item, lista);
         lv.setAdapter(adpter);
+    }
+    
+    public void cadastrar(){
+        _controller.cadastrarNovaNota(new Nota(titulo.getText().toString(), texto.getText().toString()));
+        atualizarLista();
+    }
+
+    public void atualizarLista(){
+        lista = _controller.getListaNotas();
     }
 
 

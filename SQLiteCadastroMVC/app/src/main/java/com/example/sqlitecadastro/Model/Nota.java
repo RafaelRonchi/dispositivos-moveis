@@ -14,6 +14,11 @@ public class Nota {
         Txt = txt;
     }
 
+    public Nota( String titulo, String txt) {
+        Titulo = titulo;
+        Txt = txt;
+    }
+
     public Integer getIdNota() {
         return IdNota;
     }
