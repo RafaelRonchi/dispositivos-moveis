@@ -35,7 +35,9 @@ public class MainActivity extends AppCompatActivity {
         btn = findViewById(R.id.button);
 
         lista = _controller.getListaNotas();
-
+        lista.add(new Nota(1, "teste", "teste"));
+        NotaArrayAdpter adpter = new NotaArrayAdpter(this, R.layout.activity_list_item, lista);
+        lv.setAdapter(adpter);
     }
 
 
