@@ -36,10 +36,10 @@ public class NotaDAO {
     }
 
     public void  excluirNota(Nota nota){
-         sqlLitedb.delete("notas", "id = ?", new String[]{String.valueOf(nota.getIdNota())});
+         sqlLitedb.delete("nota", "id = ?", new String[]{String.valueOf(nota.getIdNota())});
     }
     public Nota getNota(Integer id){
-        String sql="SELECT * FROM notas WHERE id = ?";
+        String sql="SELECT * FROM nota WHERE id = ?";
         Cursor cv = sqlLitedb.rawQuery(sql, new String[]{String.valueOf(id)});
         //Recupenado um registro relacionado e convertendo para objeto Nota
         cv.moveToFirst();
